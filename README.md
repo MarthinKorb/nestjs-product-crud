@@ -83,7 +83,7 @@ npm run migration:run
 ```
 
 # 📁 Estrutura do Projeto
-
+```
 nestjs-product-crud/
 ├── src/
 │ ├── product/
@@ -100,14 +100,13 @@ nestjs-product-crud/
 ├── package.json
 ├── tsconfig.json
 └── README.md
+```
 
-🛠 Tecnologias utilizadas
+## 🛠 Tecnologias utilizadas
+```
 NestJS
-
 TypeORM
-
 PostgreSQL
-
 Docker
-
 Node.js
+```
