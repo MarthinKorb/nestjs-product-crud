@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
@@ -25,6 +26,15 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type, Accept',
   });
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // remove propriedades não definidas nos DTOs
+      forbidNonWhitelisted: true, // lança erro se propriedades não permitidas forem passadas
+      transform: true, // transforma tipos automaticamente (ex: string para number)
+      errorHttpStatusCode: 422, // código de status HTTP para erros de validação
+    }),
+  );
 
   const port = process.env.PORT || 3001;
 

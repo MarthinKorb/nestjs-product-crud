@@ -1,34 +1,28 @@
-import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('Products')
 export class Product {
   @PrimaryGeneratedColumn()
-  @ApiProperty()
   id: number;
 
   @Column()
-  @ApiProperty()
   name: string;
 
-  @Column('decimal')
-  @ApiProperty()
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   price: number;
 
   @Column()
-  @ApiProperty()
   description: string;
 
   @Column({ default: true })
-  @ApiProperty()
-  available: boolean;
+  active: boolean;
 
   @Column({
     name: 'created_at',
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',
+    select: false,
   })
-  @ApiProperty()
   createdAt: Date;
 
   @Column({
@@ -36,7 +30,7 @@ export class Product {
     type: 'timestamp',
     onUpdate: 'CURRENT_TIMESTAMP',
     default: () => 'CURRENT_TIMESTAMP',
+    select: false,
   })
-  @ApiProperty()
   updatedAt: Date;
 }
