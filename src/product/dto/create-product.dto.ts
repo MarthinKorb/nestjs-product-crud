@@ -31,5 +31,5 @@ export class CreateProductDto {
     default: true,
   })
   @IsBoolean({ message: 'Available must be a boolean value' })
-  available?: boolean;
+  active?: boolean;
 }

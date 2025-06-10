@@ -33,7 +33,7 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
     default: true,
   })
   @IsNotEmpty({ message: 'Availability status is required' })
-  available: boolean;
+  active: boolean;
 
   updatedAt?: Date;
 }
